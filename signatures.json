@@ -1,0 +1,18 @@
+{
+    "sql_injection": {
+        "pattern": "' OR 1=1|UNION SELECT|SELECT.*FROM|DROP TABLE",
+        "severity": "high"
+    },
+    "xss": {
+        "pattern": "<script>|javascript:|onerror=|alert",
+        "severity": "high"
+    },
+    "directory_traversal": {
+        "pattern": "\\.\\./|/etc/passwd",
+        "severity": "high"
+    },
+    "sensitive_file_access": {
+    "pattern": "\\.env|config\\.json|wp-config\\.php",
+    "severity": "high"
+    }
+}
