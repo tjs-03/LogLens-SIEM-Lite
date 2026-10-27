@@ -33,7 +33,7 @@ The extraction rule filters execute complex regex scanning to identify, segment,
 ├── parser.py               # Log ingestion logic utilizing python chunk streaming
 ├── detector.py             # Rule signature algorithmic detection processing engine
 ├── signatures.json         # Decoupled JSON threat rules severity database
-├── final_dashboard.html    # Standalone hybrid dark-theme Operations Center view
+├── dashboard.html          # Standalone hybrid dark-theme Operations Center view
 └── hackertest.log          # Baseline pre-compiled server valuation dataset
 ```
 
