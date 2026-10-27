@@ -67,7 +67,7 @@ Ensure your local `hackertest.log` dataset resides side-by-side with `app.py`.
   *(Verify terminal terminal traces indicate: `* Running on all addresses (0.0.0.0)`)*
 
 * **Terminal B (Operations Console Dashboard):**
-  Simply go to Windows File Explorer and **Double-Click** on `final_dashboard.html`. It will launch the premium operations panel inside any modern web browser.
+  Simply go to Windows File Explorer and **Double-Click** on `dashboard.html`. It will launch the premium operations panel inside any modern web browser.
 
 ---
 
