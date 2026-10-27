@@ -7,7 +7,7 @@ from flask_cors import CORS
 from detector import analyze_and_aggregate_logs
 
 app = Flask(__name__)
-# Sabhi local origins aur headers bypass karne ke liye CORS fully rule allow locked
+# for all local origins and headers bypass CORS fully rule allow locked
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 UPLOAD_FOLDER = 'uploads'
@@ -74,5 +74,5 @@ def check_job_status(job_id):
     return jsonify(jobs_queue[job_id])
 
 if __name__ == '__main__':
-    # host='0.0.0.0' lagane se browser localhost aur 127.0.0.1 dono pipelines accept karega
+    # for adding host='0.0.0.0' browser localhost and 127.0.0.1 both pipelines will accept 
     app.run(debug=True, port=5000, host='0.0.0.0')
