@@ -2,12 +2,12 @@ import os
 import uuid
 import threading
 import time
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from detector import analyze_and_aggregate_logs
 
 app = Flask(__name__)
-# Sabhi local origins aur headers bypass karne ke liye CORS fully rule allow locked
+# for all local origins and headers bypass CORS fully rule allow locked
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 UPLOAD_FOLDER = 'uploads'
@@ -34,6 +34,10 @@ def async_processing_worker(job_id, file_path):
     except Exception as e:
         jobs_queue[job_id]['status'] = 'failed'
         jobs_queue[job_id]['error'] = str(e)
+
+@app.route('/', methods=['GET'])
+def serve_dashboard():
+    return send_from_directory('.', 'dashboard.html')
 
 @app.route('/api/upload', methods=['POST', 'OPTIONS'])
 def upload_log_async():
@@ -74,5 +78,5 @@ def check_job_status(job_id):
     return jsonify(jobs_queue[job_id])
 
 if __name__ == '__main__':
-    # host='0.0.0.0' lagane se browser localhost aur 127.0.0.1 dono pipelines accept karega
+    # for adding host='0.0.0.0' browser localhost and 127.0.0.1 both pipelines will accept 
     app.run(debug=True, port=5000, host='0.0.0.0')
