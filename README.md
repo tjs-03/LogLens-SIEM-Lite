@@ -29,12 +29,12 @@ The extraction rule filters execute complex regex scanning to identify, segment,
 
 
 ### Software Repository Architecture Diagram
-*** app.py                        # Multi-threaded Flask API backend server gateway
-*** parser.py                   # Log ingestion logic utilizing python chunk streaming
-*** detector.py                 # Rule signature algorithmic detection processing engine
-*** signatures.json        # Decoupled JSON threat rules severity database
-*** dashboard.html      # Standalone hybrid dark-theme Operations Center view
-*** hackertest.log          # Baseline pre-compiled server valuation dataset
+# app.py                        # Multi-threaded Flask API backend server gateway
+# parser.py                   # Log ingestion logic utilizing python chunk streaming
+# detector.py                 # Rule signature algorithmic detection processing engine
+# signatures.json        # Decoupled JSON threat rules severity database
+# dashboard.html      # Standalone hybrid dark-theme Operations Center view
+# hackertest.log          # Baseline pre-compiled server valuation dataset
 
 
 ## Local Setup & Execution Guide (Terminal Commands)
