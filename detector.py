@@ -11,7 +11,7 @@ def analyze_and_aggregate_logs(log_file_path):
     alerts = []                  
     ip_attack_counts = {}        
     
-    # 404/403 tracks karne ke liye ek temporary counter dict
+    # for tracking 404/403 a temporary counter dict
     ip_error_tracker = {}
     
     for log_entry in parse_log_stream(log_file_path):
@@ -21,7 +21,7 @@ def analyze_and_aggregate_logs(log_file_path):
         
         is_attack = False
         
-        # A. Signatures check karo (SQLi, XSS, Traversal)
+        # A. Check Signatures (SQLi, XSS, Traversal)
         for attack_type, info in signatures.items():
             if re.search(info['pattern'], path, re.IGNORECASE):
                 log_entry['attack_type'] = attack_type
@@ -30,19 +30,19 @@ def analyze_and_aggregate_logs(log_file_path):
                 is_attack = True
                 break 
         
-        # B. Standard Brute Force check karo (401 Status)
+         # B. Check Standard Brute Force (401 Status)
         if not is_attack and status == '401':
             log_entry['attack_type'] = 'potential_brute_force'
             log_entry['severity'] = 'medium'
             alerts.append(log_entry)
             is_attack = True
             
-        # C. New Logic: Suspicious Scanner check karo (404/403 Errors)
+         # B. Check Standard Brute Force (401 Status)
         if not is_attack and status in ['403', '404']:
-            # IP ka error counter badhao
+            # increse error counter of IP
             ip_error_tracker[ip] = ip_error_tracker.get(ip, 0) + 1
             
-            # Agar koi IP 2 ya usse zyada baar 404/403 error generate kare
+             # If any IP Generat Error more then 2 404/403 
             if ip_error_tracker[ip] >= 2:
                 # Naye attack object me copy karo taaki duplicates na aayein
                 scanner_alert = log_entry.copy()

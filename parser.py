@@ -1,6 +1,6 @@
 import re
 
-# Flexible pattern jo path ke andar ke quotes aur spaces ko easily block nahi karega
+# Flexible pattern for quotes and spaces inside the path who can't Block easyly
 log_pattern = r'(?P<ip>\S+) \S+ \S+ \[(?P<date>.*?)\] "(?P<method>\S+) (?P<path>.+?) HTTP/\d\.\d" (?P<status>\d+) \S+'
 
 def parse_log_stream(file_path):
