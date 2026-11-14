@@ -1,4 +1,4 @@
- LogLens-SIEM-Lite
+## LogLens-SIEM-Lite
 
 LogLens AI - Automated SIEM-Lite Threat Intelligence Framework
 LogLens AI is an enterprise-grade, lightweight Security Information and Event Management (SIEM) pipeline designed to ingest, parse, and block malicious cyber threat vectors from production web server logs (Apache/Nginx) in real-time.
